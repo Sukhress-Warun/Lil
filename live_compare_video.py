@@ -25,7 +25,7 @@ try:
 except:
     video_to_image(video_path, destination_path, limit, skip=skip)
     print("\ngetting poses from images\n")
-    poses_array, paths = images_to_poses([destination_path+str(i)+'.jpg' for i in range(0, max(int(frames_count(video_path)//skip), limit))], get_images_path=True)
+    poses_array, paths = images_to_poses([destination_path+str(i)+'.jpg' for i in range(0, min(int(frames_count(video_path)//skip), limit))], get_images_path=True)
     with open(destination_path+"poses.bin",'wb') as f:
         pickle.dump([poses_array, paths],f)
 
